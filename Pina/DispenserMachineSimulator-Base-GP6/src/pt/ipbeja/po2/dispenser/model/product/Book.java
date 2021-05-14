@@ -32,7 +32,7 @@ public class Book extends ProductWithAuthor{
 
     @Override
     public String toString() {
-        return "Book{" +
+        return super.toString() + " Book{" +
                 "publisher='" + publisher + '\'' +
                 '}';
     }

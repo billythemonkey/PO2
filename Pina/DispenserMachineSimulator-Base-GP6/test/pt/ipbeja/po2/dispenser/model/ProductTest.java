@@ -1,6 +1,7 @@
 package pt.ipbeja.po2.dispenser.model;
 
 import org.junit.jupiter.api.Test;
+import pt.ipbeja.po2.dispenser.model.product.Book;
 import pt.ipbeja.po2.dispenser.model.product.Product;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ class ProductTest {
     void productListTest() {
 
         List<Product> productList = new ArrayList<>();
-        Product p = new Product("Bolachas", 50);
+        Product p = new Book("With the wolves", 50, new ArrayList<>(), "PortoEditora");
         productList.add(p);
 
         Product savedProduct = productList.get(0);
@@ -27,7 +28,7 @@ class ProductTest {
         assertEquals(50, savedProduct.getPrice());
         assertEquals(p, savedProduct);
 
-        Product copy = new Product("Bolachas", 50);
+        Product copy = new Book("With the wolves", 50, new ArrayList<>(), "PortoEditora");
         assertEquals(p, copy);
         assertTrue(productList.contains(copy));
 

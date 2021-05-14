@@ -2,8 +2,9 @@ package pt.ipbeja.po2.dispenser.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pt.ipbeja.po2.dispenser.model.product.Product;
+import pt.ipbeja.po2.dispenser.model.product.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,9 +23,11 @@ class DispenserTest {
     void setup() {
         Register register = new Register("XYZ", "Bolhas company", 2006);
         this.dispenser = new Dispenser(register);
-        this.dispenser.addProduct(new Product("Bolachas", 40));
-        this.dispenser.addProduct(new Product("Bolo", 100));
-        this.dispenser.addProduct(new Product("Pastilhas", 50));
+        this.dispenser.addProduct(new Video("Frozen", 40, new ArrayList<>(), 120, "Pixar"));
+        this.dispenser.addProduct(new Camera("RF120", 100, "Sony"));
+        this.dispenser.addProduct(new Book("With the wolves", 50, new ArrayList<>(), "PortoEditora"));
+        this.dispenser.addProduct(new CD("Eminem", 20, new ArrayList<>(), 180, new ArrayList<>()));
+
     }
 
     @Test
@@ -149,14 +152,14 @@ class DispenserTest {
 
     @Test
     void getMostExpensiveTest() {
-        Product expected = new Product("Bolo", 100);
+        Product expected = new Camera("RF120", 100, "Sony");
         Product expensive = dispenser.getMostExpensiveProduct();
         assertEquals(expected, expensive);
     }
 
     @Test
     void getCheapestTest() {
-        Product expected = new Product("Bolachas", 40);
+        Product expected = new CD("Eminem", 20, new ArrayList<>(), 180, new ArrayList<>());
         Product cheapest = dispenser.getCheapestProduct();
         assertEquals(expected, cheapest);
     }
@@ -172,12 +175,14 @@ class DispenserTest {
     @Test
     void getProductNamesTest() {
         String names = dispenser.getProductNames();
-        assertEquals("Bolachas\nBolo\nPastilhas\n", names);
+        assertEquals("Bolachas\nBolo\nPastilhas\nEminem\n", names);
     }
 
     @Test
     void getProductsCheaperThanTest() {
-        List<Product> expected = Arrays.asList(new Product("Bolachas", 40), new Product("Pastilhas", 50));
+        List<Product> expected = Arrays.asList(new Video("Frozen", 40, new ArrayList<>(), 120, "Pixar"),
+                new Book("With the wolves", 50, new ArrayList<>(), "PortoEditora"),
+                new CD("Eminem", 20, new ArrayList<>(), 180, new ArrayList<>()));
         List<Product> cheaper = dispenser.getProductsCheaperThan(51);
         assertEquals(expected, cheaper);
     }

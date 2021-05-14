@@ -3,7 +3,7 @@ package pt.ipbeja.po2.dispenser.model.product;
 import java.util.List;
 import java.util.Objects;
 
-public class Disc extends ProductWithAuthor{
+public abstract class Disc extends ProductWithAuthor{
 
     private int duration;
 
@@ -32,7 +32,7 @@ public class Disc extends ProductWithAuthor{
 
     @Override
     public String toString() {
-        return "Disc{" +
+        return super.toString() + " Disc{" +
                 "duration=" + duration +
                 '}';
     }

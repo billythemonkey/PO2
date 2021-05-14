@@ -3,7 +3,7 @@ package pt.ipbeja.po2.dispenser.model.product;
 import java.util.List;
 import java.util.Objects;
 
-public class ProductWithAuthor extends Product{
+public abstract class ProductWithAuthor extends Product{
 
     private List<Author> authors;
 
@@ -32,7 +32,7 @@ public class ProductWithAuthor extends Product{
 
     @Override
     public String toString() {
-        return "ProductWithAuthor{" +
+        return super.toString() + " ProductWithAuthor{" +
                 "authors=" + authors +
                 '}';
     }

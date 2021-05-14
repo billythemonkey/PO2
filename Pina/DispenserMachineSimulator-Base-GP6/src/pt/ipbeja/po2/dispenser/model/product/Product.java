@@ -2,7 +2,7 @@ package pt.ipbeja.po2.dispenser.model.product;
 
 import java.util.Objects;
 
-public class Product {
+public abstract class Product {
 
     private String name;
     private int price;
